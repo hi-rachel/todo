@@ -5,7 +5,9 @@ declare module "styled-components" {
     textColor: string;
     bgColor: string;
     accentColor: string;
-    desColor: string;
-    tabColor: string;
+    boxColor: string;
+    btnColor: string;
+    btnTextColor: string;
+    sideBtnSelectColor: string;
   }
 }

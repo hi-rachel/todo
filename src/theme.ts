@@ -1,9 +1,11 @@
 import { DefaultTheme } from "styled-components";
 
 export const darkTheme: DefaultTheme = {
-  bgColor: "#1C1A27",
-  textColor: "red",
-  accentColor: "#D50022",
-  desColor: "#FCE2DB",
-  tabColor: "#fff",
+  bgColor: "#72FFFF",
+  textColor: "#222",
+  accentColor: "#0096FF",
+  boxColor: "#fff",
+  btnColor: "#5800FF",
+  btnTextColor: "#fff",
+  sideBtnSelectColor: "rgba(0, 0, 0, 0.06)",
 };
