@@ -15,7 +15,7 @@ const Text = styled.div`
   word-wrap: break-word;
   padding: 5px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 10px;
 `;
 

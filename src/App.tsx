@@ -53,12 +53,18 @@ table {
 * {
   box-sizing: border-box;
 }
+h1 {
+  font-family: 'Alkalami', serif;
+}
 body {
   font-weight: 300;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   background-color:${(props) => props.theme.bgColor};
   color:${(props) => props.theme.textColor};
   line-height: 1.2;
+}
+button {
+  font-family: 'Noto Sans KR', sans-serif;
 }
 a {
   text-decoration:none;

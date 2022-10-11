@@ -9,6 +9,7 @@ interface IForm {
 }
 
 const WriteForm = styled.form`
+  min-width: 330px;
   width: 100%;
   text-align: center;
   margin-top: 18px;

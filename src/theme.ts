@@ -5,7 +5,7 @@ export const darkTheme: DefaultTheme = {
   textColor: "#222",
   accentColor: "#0096FF",
   boxColor: "#fff",
-  btnColor: "#5800FF",
+  btnColor: "#0096FF",
   btnTextColor: "#fff",
   sideBtnSelectColor: "rgba(0, 0, 0, 0.06)",
 };

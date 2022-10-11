@@ -6,8 +6,17 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
+const All = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+
 const BoxWrap = styled.div`
-  margin: 100px auto;
+  margin: 50px 10px;
   max-width: 480px;
   height: 600px;
   border-radius: 10px;
@@ -35,6 +44,7 @@ const Box = styled.div`
 `;
 
 const CategoryBtn = styled.div`
+  z-index: 2;
   font-size: 15px;
   position: absolute;
   top: 50px;
@@ -70,7 +80,20 @@ const Btn = styled.div`
 `;
 
 const LastBtn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .deleteAll {
+    background-color: #ffffffaa;
+  }
+`;
+
+const Footer = styled.footer`
+  font-size: 14px;
   margin-bottom: 30px;
+  text-align: center;
+  color: ${(props) => props.theme.accentColor};
 `;
 
 function ToDoList() {
@@ -93,41 +116,62 @@ function ToDoList() {
     }
   };
 
+  const deleteCategory = () => {
+    if (
+      window.confirm(
+        `Are you sure delete all categories?\nTO DO, Doing, Done isn't deleted.`
+      )
+    ) {
+      localStorage.removeItem("addCategory");
+      window.location.reload();
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem("addCategory", JSON.stringify(addCategory));
   }, [addCategory]);
 
   return (
     <>
-      <CategoryBtn>
-        <h1>Categories</h1>
-        {addCategory.map((availableCategory) => (
-          <Btn key={availableCategory}>
-            <button
-              onClick={() => onClick(availableCategory)}
-              disabled={availableCategory === category}
-            >
-              {availableCategory}
-            </button>
-          </Btn>
-        ))}
-        <LastBtn>
-          <Btn>
-            <button onClick={newCategory}>
-              <AiOutlinePlus />
-            </button>
-          </Btn>
-        </LastBtn>
-      </CategoryBtn>
-      <BoxWrap>
-        <Box>
-          <h1>Just Do It.</h1>
-          <CreateToDo />
-          {toDos?.map((toDo) => (
-            <ToDo key={toDo.id} {...toDo} />
+      <All>
+        <CategoryBtn>
+          <h1>Categories</h1>
+          {addCategory.map((availableCategory) => (
+            <Btn key={availableCategory}>
+              <button
+                onClick={() => onClick(availableCategory)}
+                disabled={availableCategory === category}
+              >
+                {availableCategory}
+              </button>
+            </Btn>
           ))}
-        </Box>
-      </BoxWrap>
+          <LastBtn>
+            <Btn>
+              <button onClick={newCategory}>
+                <AiOutlinePlus />
+              </button>
+            </Btn>
+            <Btn>
+              <button className="deleteAll" onClick={deleteCategory}>
+                💣
+              </button>
+            </Btn>
+          </LastBtn>
+        </CategoryBtn>
+        <BoxWrap>
+          <Box>
+            <h1>Just Do It.</h1>
+            <CreateToDo />
+            {toDos?.map((toDo) => (
+              <ToDo key={toDo.id} {...toDo} />
+            ))}
+          </Box>
+        </BoxWrap>
+        <Footer>
+          <p>© Rachel Moon</p>
+        </Footer>
+      </All>
     </>
   );
 }
